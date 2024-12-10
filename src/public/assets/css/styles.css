@@ -1,0 +1,61 @@
+/* Убедитесь, что html и body растягиваются на всю высоту экрана */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Оборачиваем все содержимое в контейнер, чтобы работать с flexbox */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Делаем контейнер как минимум на весь экран */
+}
+
+/* Главная часть контента занимает доступное пространство */
+main {
+  flex-grow: 1; /* Заполняет все доступное пространство */
+}
+
+/* Футер всегда будет внизу */
+footer {
+  margin-top: auto; /* Это закрепит футер внизу */
+}
+
+/* Делаем футер более приятным для отображения */
+footer .footer-wrapper {
+  padding: 20px;
+  text-align: center;
+}
+
+.remove-button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  width: 130px;
+}
+
+.remove-button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #f44336;
+}
+
+.remove-button1:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.carousel-item {
+  position: relative;
+  width: 100%;
+  height: 56.25%; /* 16:9 aspect ratio */
+}
