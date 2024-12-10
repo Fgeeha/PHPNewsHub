@@ -109,10 +109,22 @@ The project is containerized with Docker. You can manage the application with Do
 docker-compose up --build -d
 ```
 
+or
+
+```bash
+make app
+```
+
 - To stop the app, run:
 
 ```bash
 docker-compose down
+```
+
+or
+
+```bash
+make app-down
 ```
 
 ### PHP CS Fixer
