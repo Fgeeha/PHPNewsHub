@@ -1,0 +1,48 @@
+services:
+  php-news:
+    build: .
+    container_name: php-news
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - news-network
+
+  db:
+    image: postgres:15
+    container_name: postgres-news
+    environment:
+      POSTGRES_USER: news_user
+      POSTGRES_PASSWORD: news_password
+      POSTGRES_DB: news_db
+    volumes:
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - news-network
+
+  pgadmin:
+    image: dpage/pgadmin4:8.13
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.org
+      PGADMIN_DEFAULT_PASSWORD: admin_password
+      # PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "8001:80"
+    depends_on:
+      - db
+    networks:
+      - news-network
+
+volumes:
+  postgres_data:
+
+networks:
+  news-network:
+    driver: bridge
