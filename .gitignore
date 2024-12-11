@@ -1,5 +1,6 @@
 postgres_data/
 vendor/
 src/vendor/
+src/uploads/
 src/composer*
 .php-cs-fixer.cache
